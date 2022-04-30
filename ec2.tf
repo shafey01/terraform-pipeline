@@ -25,11 +25,11 @@ resource "aws_instance" "web2" {
   tags = {
     Name = "bastion_server"
   }
-  provisioner "local-exec" {
-#       command = "echo ${aws_instance.web2.public_ip} > ./ansible/inventory"
+#   provisioner "local-exec" {
+# #       command = "echo ${aws_instance.web2.public_ip} > ./ansible/inventory"
 
     
-  }
+#   }
 }
 
 
