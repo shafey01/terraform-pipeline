@@ -7,10 +7,6 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
         TF_IN_AUTOMATION      = '1'
     }
-    
-    tools {
-        terraform 'terraform'
-    }
 
     stages {
 
@@ -28,8 +24,8 @@ pipeline {
 
             steps{
                 slackSend color: "#66ff99", message: "start terraform plan on dev enviroment"
-                sh "terraform init "
-                 sh "terraform plan -var-file=dev.tfvars  "
+                sh "terraform init -var 'access_key=$AWS_ACCESS_KEY_ID' -var 'secret_key=$AWS_SECRET_ACCESS_KEY'"
+                 sh "terraform plan -var-file=dev.tfvars -var 'access_key=$AWS_ACCESS_KEY_ID' -var 'secret_key=$AWS_SECRET_ACCESS_KEY' "
             }
         }
 
@@ -38,7 +34,7 @@ pipeline {
            
             steps{
                 slackSend color: "#66ff99", message: "start terraform apply on dev enviroment"
-              sh "terraform apply -var-file=dev.tfvars -auto-approve "
+              sh "terraform apply -var-file=dev.tfvars -auto-approve -var 'access_key=$AWS_ACCESS_KEY_ID' -var 'secret_key=$AWS_SECRET_ACCESS_KEY' "
             }
         }
 
