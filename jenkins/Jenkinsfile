@@ -17,7 +17,7 @@ pipeline {
 
             steps{
                 slackSend color: "#66ff99", message: "start terraform plan on dev enviroment"
-                 sh "terraform plan -var-file="dev.tfvars" -auto-approve "
+                 sh "terraform plan -var-file=dev.tfvars -auto-approve "
             }
         }
 
@@ -26,7 +26,7 @@ pipeline {
            
             steps{
                 slackSend color: "#66ff99", message: "start terraform apply on dev enviroment"
-              sh "terraform apply -var-file="dev.tfvars" -auto-approve "
+              sh "terraform apply -var-file=dev.tfvars -auto-approve "
             }
         }
 
