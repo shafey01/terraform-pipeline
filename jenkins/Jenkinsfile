@@ -30,10 +30,9 @@ pipeline {
 
             steps{
                 slackSend color: "#66ff99", message: "start terraform plan on dev enviroment"
-//                 sh "terraform init -input=false"
-//                  sh "terraform plan -var-file=dev.tfvars  "
-                sh './tfswitch init'
-                sh './tfswitch plan  '
+                sh "terraform init -input=false"
+                 sh "terraform plan -var-file=dev.tfvars  "
+                
             }
         }
 
@@ -45,7 +44,7 @@ pipeline {
 //               sh "terraform apply -var-file=dev.tfvars -auto-approve "
 //             }
             steps {
-        sh './tfswitch apply -auto-approve -no-color'
+        sh 'terraform apply -auto-approve -no-color'
       }
         }
             
