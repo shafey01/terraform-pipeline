@@ -35,5 +35,10 @@ variable "AZ_1" {
 variable "AZ_2" {
   type = string
 }
-
+variable "access_key" {
+  type = string
+}
+variable "secret_key" {
+  type = string
+}
 
