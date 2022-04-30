@@ -30,19 +30,26 @@ pipeline {
 
             steps{
                 slackSend color: "#66ff99", message: "start terraform plan on dev enviroment"
-                sh "terraform init -input=false"
-                 sh "terraform plan -var-file=dev.tfvars  "
+//                 sh "terraform init -input=false"
+//                  sh "terraform plan -var-file=dev.tfvars  "
+                sh './terraformw init'
+                sh './terraformw plan  '
             }
         }
 
         stage('terraform apply on dev enviroment'){
 
            
-            steps{
-                slackSend color: "#66ff99", message: "start terraform apply on dev enviroment"
-              sh "terraform apply -var-file=dev.tfvars -auto-approve "
-            }
-        }
+//             steps{
+//                 slackSend color: "#66ff99", message: "start terraform apply on dev enviroment"
+//               sh "terraform apply -var-file=dev.tfvars -auto-approve "
+//             }
+            steps {
+        sh './terraformw apply -auto-approve -no-color'
+      }
+            
+            
+          
 
         stage('ansible install node exporter'){
 
