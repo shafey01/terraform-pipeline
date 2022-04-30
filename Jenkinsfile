@@ -24,7 +24,7 @@ pipeline {
 
             steps{
                 slackSend color: "#66ff99", message: "start terraform plan on dev enviroment"
-                sh "terraform init "
+//                 sh "terraform init "
                  sh "terraform plan -var-file=dev.tfvars  "
             }
         }
