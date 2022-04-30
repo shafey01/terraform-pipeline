@@ -1,0 +1,4 @@
+/.terraform
+ips.txt
+key.pem
+terraformkey.pem
