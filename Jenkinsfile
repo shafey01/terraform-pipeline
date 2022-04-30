@@ -21,6 +21,12 @@ pipeline {
 
         stage('plan terraform on dev enviroment'){
             
+             environment {
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+        TF_IN_AUTOMATION      = '1'
+    }
+            
 
             steps{
                 slackSend color: "#66ff99", message: "start terraform plan on dev enviroment"
@@ -30,6 +36,12 @@ pipeline {
         }
 
         stage('terraform apply on dev enviroment'){
+            
+             environment {
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+        TF_IN_AUTOMATION      = '1'
+    }
 
            
             steps{
