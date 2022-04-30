@@ -19,7 +19,7 @@ resource "aws_instance" "web2" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
   subnet_id = module.Network.subnet_public_1_id
-  vpc_security_group_ids = [aws_security_group.main_security_group.id]
+#   vpc_security_group_ids = [aws_security_group.main_security_group.id]
   key_name = "terraformkey"
 
   tags = {
