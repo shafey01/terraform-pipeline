@@ -47,7 +47,7 @@ pipeline {
             steps {
         sh './terraformw apply -auto-approve -no-color'
       }
-            
+        }
             
           
 
